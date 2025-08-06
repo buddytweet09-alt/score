@@ -155,7 +155,7 @@ public class Match {
                 JsonObject jsonObject = json.getAsJsonObject();
                 
                 // Basic match info
-                if (jsonObject.has("Eid")) {
+                if (jsonObject.has("Eid") && !jsonObject.get("Eid").isJsonNull()) {
                     match.setId(jsonObject.get("Eid").getAsString());
                 }
                 
@@ -167,15 +167,15 @@ public class Match {
                     match.setAwayScore(jsonObject.get("Tr2").getAsString());
                 }
                 
-                if (jsonObject.has("Eps")) {
+                if (jsonObject.has("Eps") && !jsonObject.get("Eps").isJsonNull()) {
                     match.setStatus(jsonObject.get("Eps").getAsString());
                 }
                 
-                if (jsonObject.has("Esd")) {
+                if (jsonObject.has("Esd") && !jsonObject.get("Esd").isJsonNull()) {
                     match.setStartTime(jsonObject.get("Esd").getAsLong());
                 }
                 
-                if (jsonObject.has("Ecov")) {
+                if (jsonObject.has("Ecov") && !jsonObject.get("Ecov").isJsonNull()) {
                     match.setCoverage(jsonObject.get("Ecov").getAsInt());
                 }
                 
@@ -184,7 +184,7 @@ public class Match {
                 }
                 
                 // Handle teams - they might be objects or arrays
-                if (jsonObject.has("T1")) {
+                if (jsonObject.has("T1") && !jsonObject.get("T1").isJsonNull()) {
                     JsonElement t1Element = jsonObject.get("T1");
                     if (t1Element.isJsonObject()) {
                         Team homeTeam = context.deserialize(t1Element, Team.class);
@@ -195,7 +195,7 @@ public class Match {
                     }
                 }
                 
-                if (jsonObject.has("T2")) {
+                if (jsonObject.has("T2") && !jsonObject.get("T2").isJsonNull()) {
                     JsonElement t2Element = jsonObject.get("T2");
                     if (t2Element.isJsonObject()) {
                         Team awayTeam = context.deserialize(t2Element, Team.class);
@@ -207,9 +207,14 @@ public class Match {
                 }
                 
                 // Handle competition
-                if (jsonObject.has("Comp")) {
+                if (jsonObject.has("Comp") && !jsonObject.get("Comp").isJsonNull()) {
                     Competition competition = context.deserialize(jsonObject.get("Comp"), Competition.class);
                     match.setCompetition(competition);
+                }
+                
+                // Validate that we have essential data
+                if (match.getId() == null || match.getHomeTeam() == null || match.getAwayTeam() == null) {
+                    return null;
                 }
                 
             } catch (Exception e) {

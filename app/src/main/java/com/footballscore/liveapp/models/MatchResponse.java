@@ -55,40 +55,64 @@ public class MatchResponse {
             List<Stage> stages = new ArrayList<>();
             
             try {
-                JsonObject jsonObject = json.getAsJsonObject();
-                
-                if (jsonObject.has("Stages") && jsonObject.get("Stages").isJsonArray()) {
-                    JsonArray stagesArray = jsonObject.getAsJsonArray("Stages");
+                // Handle both object and array responses
+                if (json.isJsonObject()) {
+                    JsonObject jsonObject = json.getAsJsonObject();
                     
-                    for (JsonElement stageElement : stagesArray) {
-                        JsonObject stageObject = stageElement.getAsJsonObject();
-                        Stage stage = new Stage();
+                    if (jsonObject.has("Stages") && jsonObject.get("Stages").isJsonArray()) {
+                        JsonArray stagesArray = jsonObject.getAsJsonArray("Stages");
                         
-                        if (stageObject.has("Snm")) {
-                            stage.setName(stageObject.get("Snm").getAsString());
-                        }
-                        
-                        if (stageObject.has("Events") && stageObject.get("Events").isJsonArray()) {
-                            JsonArray eventsArray = stageObject.getAsJsonArray("Events");
-                            List<Match> matches = new ArrayList<>();
+                        for (JsonElement stageElement : stagesArray) {
+                            JsonObject stageObject = stageElement.getAsJsonObject();
+                            Stage stage = new Stage();
                             
-                            for (JsonElement eventElement : eventsArray) {
-                                try {
-                                    Match match = context.deserialize(eventElement, Match.class);
-                                    if (match != null) {
-                                        matches.add(match);
-                                    }
-                                } catch (Exception e) {
-                                    // Skip invalid match data
-                                    continue;
-                                }
+                            if (stageObject.has("Snm")) {
+                                stage.setName(stageObject.get("Snm").getAsString());
                             }
                             
-                            stage.setMatches(matches);
+                            if (stageObject.has("Events") && stageObject.get("Events").isJsonArray()) {
+                                JsonArray eventsArray = stageObject.getAsJsonArray("Events");
+                                List<Match> matches = new ArrayList<>();
+                                
+                                for (JsonElement eventElement : eventsArray) {
+                                    try {
+                                        Match match = context.deserialize(eventElement, Match.class);
+                                        if (match != null && match.getId() != null) {
+                                            matches.add(match);
+                                        }
+                                    } catch (Exception e) {
+                                        // Skip invalid match data
+                                        continue;
+                                    }
+                                }
+                                
+                                stage.setMatches(matches);
+                            }
+                            
+                            stages.add(stage);
                         }
-                        
-                        stages.add(stage);
                     }
+                } else if (json.isJsonArray()) {
+                    // Handle direct array response
+                    JsonArray jsonArray = json.getAsJsonArray();
+                    Stage stage = new Stage();
+                    stage.setName("Matches");
+                    List<Match> matches = new ArrayList<>();
+                    
+                    for (JsonElement element : jsonArray) {
+                        try {
+                            Match match = context.deserialize(element, Match.class);
+                            if (match != null && match.getId() != null) {
+                                matches.add(match);
+                            }
+                        } catch (Exception e) {
+                            // Skip invalid match data
+                            continue;
+                        }
+                    }
+                    
+                    stage.setMatches(matches);
+                    stages.add(stage);
                 }
                 
                 response.setStages(stages);

@@ -31,7 +31,7 @@ public class ApiClient {
         if (retrofit == null) {
             // Create logging interceptor
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
 
             // Create OkHttp client with headers
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
@@ -40,7 +40,7 @@ public class ApiClient {
                         Request.Builder requestBuilder = original.newBuilder()
                                 .header("X-RapidAPI-Key", API_KEY)
                                 .header("X-RapidAPI-Host", API_HOST)
-                                .header("Content-Type", "application/json");
+                                .header("Accept", "application/json");
                         Request request = requestBuilder.build();
                         return chain.proceed(request);
                     })

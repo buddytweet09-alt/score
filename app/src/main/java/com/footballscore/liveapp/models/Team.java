@@ -56,4 +56,14 @@ public class Team {
     public void setAbbreviation(String abbreviation) {
         this.abbreviation = abbreviation;
     }
+    
+    @Override
+    public String toString() {
+        return "Team{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", logo='" + logo + '\'' +
+                ", abbreviation='" + abbreviation + '\'' +
+                '}';
+    }
 }

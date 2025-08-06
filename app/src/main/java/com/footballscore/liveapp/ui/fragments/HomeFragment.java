@@ -175,19 +175,22 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             for (MatchResponse.Stage stage : response.getStages()) {
                 if (stage.getMatches() != null) {
                     for (Match match : stage.getMatches()) {
-                        // Set favorite status
-                        match.setFavorite(isFavorite(match.getId()));
-                        allMatches.add(match);
-                        
-                        // Schedule notifications for favorite matches
-                        if (match.isFavorite() && match.isUpcoming()) {
-                            scheduleMatchNotifications(match);
+                        if (match != null && match.getId() != null) {
+                            // Set favorite status
+                            match.setFavorite(isFavorite(match.getId()));
+                            allMatches.add(match);
+                            
+                            // Schedule notifications for favorite matches
+                            if (match.isFavorite() && match.isUpcoming()) {
+                                scheduleMatchNotifications(match);
+                            }
                         }
                     }
                 }
             }
         }
 
+        Log.d(TAG, "Processed " + allMatches.size() + " matches");
         filterMatches();
     }
 

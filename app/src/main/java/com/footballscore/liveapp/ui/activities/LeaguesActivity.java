@@ -51,18 +51,23 @@ public class LeaguesActivity extends AppCompatActivity implements LeagueAdapter.
     private void loadLeagues() {
         showLoading(true);
         
+        Log.d(TAG, "Loading popular leagues...");
+        
         ApiClient.getApiService().getPopularLeagues().enqueue(new Callback<List<League>>() {
             @Override
             public void onResponse(Call<List<League>> call, Response<List<League>> response) {
                 showLoading(false);
+                Log.d(TAG, "Leagues response: " + response.code());
                 if (response.isSuccessful() && response.body() != null) {
                     List<League> leagues = response.body();
+                    Log.d(TAG, "Received " + leagues.size() + " leagues");
                     adapter.updateLeagues(leagues);
                     
                     if (leagues.isEmpty()) {
                         showEmptyState();
                     }
                 } else {
+                    Log.e(TAG, "Leagues error: " + response.message());
                     showError();
                 }
             }

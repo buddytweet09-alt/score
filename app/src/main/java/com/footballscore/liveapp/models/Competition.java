@@ -50,4 +50,14 @@ public class Competition {
     public void setCountry(String country) {
         this.country = country;
     }
+    
+    @Override
+    public String toString() {
+        return "Competition{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", logo='" + logo + '\'' +
+                ", country='" + country + '\'' +
+                '}';
+    }
 }

@@ -64,18 +64,27 @@ public class LeagueTableActivity extends AppCompatActivity {
     private void loadLeagueTable() {
         showLoading(true);
         
-        ApiClient.getApiService().getLeagueTable(countryCode, seasonCode).enqueue(new Callback<List<LeagueTable>>() {
+        // Use default values for testing
+        String cCode = countryCode != null ? countryCode : "england";
+        String sCode = seasonCode != null ? seasonCode : "premier-league";
+        
+        Log.d(TAG, "Loading league table for: " + cCode + "/" + sCode);
+        
+        ApiClient.getApiService().getLeagueTable(cCode, sCode).enqueue(new Callback<List<LeagueTable>>() {
             @Override
             public void onResponse(Call<List<LeagueTable>> call, Response<List<LeagueTable>> response) {
                 showLoading(false);
+                Log.d(TAG, "League table response: " + response.code());
                 if (response.isSuccessful() && response.body() != null) {
                     List<LeagueTable> table = response.body();
+                    Log.d(TAG, "Received " + table.size() + " teams");
                     adapter.updateTable(table);
                     
                     if (table.isEmpty()) {
                         showEmptyState();
                     }
                 } else {
+                    Log.e(TAG, "League table error: " + response.message());
                     showError();
                 }
             }
