@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorBackground">#FFFFFFFF</color>
+
+    <!-- Primary Colors -->
+    <color name="primary_color">#1B5E20</color>
+    <color name="primary_variant">#2E7D32</color>
+    <color name="secondary_color">#FF6F00</color>
+    <color name="secondary_variant">#FF8F00</color>
+    
+    <!-- Surface Colors -->
+    <color name="surface_color">#FFFFFF</color>
+    <color name="background_color">#F5F5F5</color>
+    <color name="error_color">#D32F2F</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    
+    <!-- Match Status Colors -->
+    <color name="live_green">#4CAF50</color>
+    <color name="finished_gray">#9E9E9E</color>
+    <color name="upcoming_blue">#2196F3</color>
+    
+    <!-- Team Colors -->
+    <color name="home_team_color">#1976D2</color>
+    <color name="away_team_color">#D32F2F</color>
+    
+    <!-- Special Colors -->
+    <color name="favorite_gold">#FFD700</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="divider_color">#E0E0E0</color>
+    
+    <!-- League Table Colors -->
+    <color name="champions_league_color">#4CAF50</color>
+    <color name="europa_league_color">#FF9800</color>
+    <color name="relegation_color">#F44336</color>
+    
+    <!-- Bottom Navigation -->
+    <color name="bottom_nav_selected">#1B5E20</color>
+    <color name="bottom_nav_unselected">#757575</color>
+</resources>

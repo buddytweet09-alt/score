@@ -1,0 +1,100 @@
+<resources>
+    <string name="app_name">Football Live Score</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_favorites">Favorites</string>
+    <string name="nav_leagues">Leagues</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Match Status -->
+    <string name="live">LIVE</string>
+    <string name="full_time">FT</string>
+    <string name="half_time">HT</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="finished">Finished</string>
+    
+    <!-- Match Details -->
+    <string name="match_info">Info</string>
+    <string name="lineups">Lineups</string>
+    <string name="statistics">Stats</string>
+    <string name="incidents">Events</string>
+    
+    <!-- Leagues -->
+    <string name="leagues_competitions">Leagues &amp; Competitions</string>
+    <string name="league_table">League Table</string>
+    <string name="position">Pos</string>
+    <string name="played">P</string>
+    <string name="wins">W</string>
+    <string name="draws">D</string>
+    <string name="losses">L</string>
+    <string name="goal_difference">GD</string>
+    <string name="points">Pts</string>
+    
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="notifications">Notifications</string>
+    <string name="about_app">About App</string>
+    <string name="share_app">Share App</string>
+    <string name="clear_cache">Clear Cache</string>
+    <string name="check_updates">Check for Updates</string>
+    
+    <!-- Error Messages -->
+    <string name="error_network">Network error. Please check your connection.</string>
+    <string name="error_loading">Failed to load data</string>
+    <string name="error_no_matches">No matches found</string>
+    
+    <!-- Empty States -->
+    <string name="no_favorites">No favorite matches</string>
+    <string name="no_matches">No matches found</string>
+    <string name="add_favorites_hint">Tap the star icon on matches to add them here</string>
+    
+    <!-- Actions -->
+    <string name="retry">Retry</string>
+    <string name="refresh">Refresh</string>
+    <string name="add_to_favorites">Add to favorites</string>
+    <string name="remove_from_favorites">Remove from favorites</string>
+    
+    <!-- Match Details -->
+    <string name="venue">Venue</string>
+    <string name="referee">Referee</string>
+    <string name="date_time">Date &amp; Time</string>
+    <string name="possession">Possession</string>
+    <string name="shots">Shots</string>
+    <string name="shots_on_target">Shots on Target</string>
+    <string name="corners">Corners</string>
+    <string name="fouls">Fouls</string>
+    <string name="yellow_cards">Yellow Cards</string>
+    <string name="red_cards">Red Cards</string>
+    <string name="offsides">Offsides</string>
+    
+    <!-- Player Info -->
+    <string name="goalkeeper">Goalkeeper</string>
+    <string name="defender">Defender</string>
+    <string name="midfielder">Midfielder</string>
+    <string name="forward">Forward</string>
+    <string name="substitute">Substitute</string>
+    
+    <!-- Incidents -->
+    <string name="goal">Goal</string>
+    <string name="yellow_card">Yellow Card</string>
+    <string name="red_card">Red Card</string>
+    <string name="substitution">Substitution</string>
+    <string name="penalty">Penalty</string>
+    
+    <!-- Time -->
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="tomorrow">Tomorrow</string>
+    
+    <!-- Notifications -->
+    <string name="notification_goal_title">⚽ GOAL!</string>
+    <string name="notification_kickoff_title">⚽ Match Started</string>
+    <string name="notification_pre_match_title">⏰ Match Starting Soon</string>
+    <string name="notification_lineup_title">📋 Lineups Available</string>
+    <string name="notification_card_yellow_title">🟨 Yellow Card</string>
+    <string name="notification_card_red_title">🟥 Red Card</string>
+    <string name="notification_half_time_title">⏸️ Half Time</string>
+    <string name="notification_full_time_title">🏁 Full Time</string>
+</resources>
